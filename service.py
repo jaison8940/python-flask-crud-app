@@ -3,7 +3,7 @@ from models import users
 import json
 import dbcreate
 
-def get(id=None):
+def getUser(id=None):
     try:       
         if id:
             user_results= users.query.filter_by(id = id)
@@ -20,7 +20,7 @@ def get(id=None):
         return str(error)
         
 
-def post(data):
+def postUser(data):
     try:
         data = json.loads(data)
         if isinstance(data,dict):
@@ -32,7 +32,7 @@ def post(data):
     except Exception as error:
         return str(error)
 
-def put(data):
+def putUser(data):
     try:
         data = json.loads(data)
         if isinstance(data,dict):
@@ -49,7 +49,7 @@ def put(data):
     except Exception as error:
         return str(error)
         
-def delete(id):
+def deleteUser(id):
     try:
         db.session.delete(users.query.get(id))
         db.session.commit()
